@@ -71,3 +71,7 @@ The actual value was positive but the model predicted a negative value
 Also known as the Type 2 error  
 
 <img src="cm.png" >
+
+### What is Feature Importance?
+Feature importance refers to a class of techniques for assigning scores to input features to a predictive model that indicates the relative importance of each feature when making a prediction.  
+Feature importance scores can be calculated for regression and classification problems.  
