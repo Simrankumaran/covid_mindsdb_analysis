@@ -55,4 +55,4 @@ Gradient boosting is a greedy algorithm and can overfit a training dataset quick
 
 ## What is Confusion Matrix?  
 A `Confusion matrix` is an N x N matrix used for evaluating the performance of a classification model, where N is the number of target classes. The matrix compares the actual target values with those predicted by the machine learning model. This gives us a holistic view of how well our classification model is performing and what kinds of errors it is making.  
-<img src="assets/cm.PNG" >
+<img src="assets/cm.png" >
