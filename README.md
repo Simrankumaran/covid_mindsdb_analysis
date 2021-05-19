@@ -70,4 +70,4 @@ The predicted value was falsely predicted
 The actual value was positive but the model predicted a negative value  
 Also known as the Type 2 error  
 
-<img src="assets/cm.png" >
+<img src="cm.png" >
