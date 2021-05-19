@@ -55,4 +55,19 @@ Gradient boosting is a greedy algorithm and can overfit a training dataset quick
 
 ## What is Confusion Matrix?  
 A `Confusion matrix` is an N x N matrix used for evaluating the performance of a classification model, where N is the number of target classes. The matrix compares the actual target values with those predicted by the machine learning model. This gives us a holistic view of how well our classification model is performing and what kinds of errors it is making.  
+* True Positive (TP)  
+The predicted value matches the actual value  
+The actual value was positive and the model predicted a positive value  
+* True Negative (TN)  
+The predicted value matches the actual value  
+The actual value was negative and the model predicted a negative value  
+* False Positive (FP) – Type 1 error  
+The predicted value was falsely predicted  
+The actual value was negative but the model predicted a positive value  
+Also known as the Type 1 error  
+* False Negative (FN) – Type 2 error  
+The predicted value was falsely predicted  
+The actual value was positive but the model predicted a negative value  
+Also known as the Type 2 error  
+
 <img src="assets/cm.png" >
