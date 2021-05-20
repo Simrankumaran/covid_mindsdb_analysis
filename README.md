@@ -34,9 +34,8 @@ It’s easy to implement and understand, but has a major drawback of becoming si
 Therefore, you can use the KNN algorithm for applications that require high accuracy but that do not require a human-readable model.
 
 **2. Decision Trees:**  
-Decision Tree is a Supervised learning technique that can be used for both classification and Regression problems, but mostly it is preferred for solving Classification problems. 
-It is a tree-structured classifier, where internal nodes represent the features of a dataset, branches represent the decision rules and each leaf node represents the outcome.  
-**USE:**
+Decision Tree is a Supervised learning technique that can be used for both classification and Regression problems, but mostly it is preferred for solving Classification problems.It is a tree-structured classifier, where internal nodes represent the features of a dataset, branches represent the decision rules and each leaf node represents the outcome.  
+**USE:** Decision trees are commonly used in operations research and operations management. If, in practice, decisions have to be taken online with no recall under incomplete knowledge, a decision tree should be paralleled by a probability model as a best choice model or online selection model algorithm.
 
 **3. Naive Bayes:**  
 It is a classification technique based on Bayes' Theorem with an assumption of independence among predictors. 
@@ -51,7 +50,7 @@ It is based on the concept of ensemble learning, which is a process of combining
 
 **5. Gradient Boosting:**  
 Gradient boosting is a greedy algorithm and can overfit a training dataset quickly.It can benefit from regularization methods that penalize various parts of the algorithm and generally improve the performance of the algorithm by reducing overfitting.  
-**USE:**
+**USE:** Gradient boosting is typically used with decision trees (especially CART trees) of a fixed size as base learners. For this special case, Friedman proposes a modification to gradient boosting method which improves the quality of fit of each base learner.  
 
 ## What is Confusion Matrix?  
 A `Confusion matrix` is an N x N matrix used for evaluating the performance of a classification model, where N is the number of target classes. The matrix compares the actual target values with those predicted by the machine learning model. This gives us a holistic view of how well our classification model is performing and what kinds of errors it is making.  
@@ -72,9 +71,10 @@ Also known as the Type 2 error
 
 <img src="cm.png" >
 
-### What is Feature Importance?
+## What is Feature Importance?
 Feature importance refers to a class of techniques for assigning scores to input features to a predictive model that indicates the relative importance of each feature when making a prediction. Feature importance scores can be calculated for regression and classification problems.  
 
-## Logictic Reg Feature Importance
+### Logictic Regression Feature Importance
 
 <img src="fi.png">
+
