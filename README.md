@@ -10,7 +10,7 @@ In machine learning, classification refers to a predictive modeling problem wher
 
 ### What is Binary Classification?  
 `Binary classification` is the simplest kind of machine learning problem. 
-The goal of binary classification is to categorise data points into one of two buckets: 0 or 1, true or false, to survive or not to survive, blue or no blue eyes, etc.
+The goal of binary classification is to categorise data points into one of two buckets: 0 or 1, true or false, to survive or not to survive, blue or no blue eyes, etc.  
 Popular algorithms that can be used for binary classification include:  
 -Logistic Regression  
 -k-Nearest Neighbors  
@@ -29,28 +29,34 @@ Popular algorithms that can be used for multi-class classification include:
 ## Algorithms that can be used for Multi-class classification problems:
 **1. K-Nearest Neighbors:**    
 The k-nearest neighbors (KNN) algorithm is a simple, easy-to-implement supervised machine learning algorithm that can be used to solve both classification and regression problems. 
-It’s easy to implement and understand, but has a major drawback of becoming significantly slows as the size of that data in use grows.  
+It’s easy to implement and understand, but has a major drawback of becoming significantly slows as the size of that data in use grows. 
+
 **USE:** The KNN algorithm can compete with the most accurate models because it makes highly accurate predictions.
 Therefore, you can use the KNN algorithm for applications that require high accuracy but that do not require a human-readable model.
 
 **2. Decision Trees:**  
 Decision Tree is a Supervised learning technique that can be used for both classification and Regression problems, but mostly it is preferred for solving Classification problems.It is a tree-structured classifier, where internal nodes represent the features of a dataset, branches represent the decision rules and each leaf node represents the outcome.  
+
 **USE:** Decision trees are commonly used in operations research and operations management. If, in practice, decisions have to be taken online with no recall under incomplete knowledge, a decision tree should be paralleled by a probability model as a best choice model or online selection model algorithm.
 
 **3. Naive Bayes:**  
 It is a classification technique based on Bayes' Theorem with an assumption of independence among predictors. 
-In simple terms, a Naive Bayes classifier assumes that the presence of a particular feature in a class is unrelated to the presence of any other feature.  
+In simple terms, a Naive Bayes classifier assumes that the presence of a particular feature in a class is unrelated to the presence of any other feature. 
+
 **USE:** When assumption of independence holds, a Naive Bayes classifier performs better compare to other models like logistic regression and you need less training data.
 It perform well in case of categorical input variables compared to numerical variable(s).
 
 **4. Random forest:**  
 Random Forest is a popular machine learning algorithm that belongs to the supervised learning technique. It can be used for both Classification and Regression problems in ML. 
 It is based on the concept of ensemble learning, which is a process of combining multiple classifiers to solve a complex problem and to improve the performance of the model.  
+
 **USE:** It provides higher accuracy through cross validation. Random forest classifier will handle the missing values and maintain the accuracy of a large proportion of data.
 
 **5. Gradient Boosting:**  
 Gradient boosting is a greedy algorithm and can overfit a training dataset quickly.It can benefit from regularization methods that penalize various parts of the algorithm and generally improve the performance of the algorithm by reducing overfitting.  
+
 **USE:** Gradient boosting is typically used with decision trees (especially CART trees) of a fixed size as base learners. For this special case, Friedman proposes a modification to gradient boosting method which improves the quality of fit of each base learner.  
+
 
 ## What is Confusion Matrix?  
 A `Confusion matrix` is an N x N matrix used for evaluating the performance of a classification model, where N is the number of target classes. The matrix compares the actual target values with those predicted by the machine learning model. This gives us a holistic view of how well our classification model is performing and what kinds of errors it is making.  
@@ -78,3 +84,5 @@ Feature importance refers to a class of techniques for assigning scores to input
 
 <img src="fi.png">
 
+Visualizing a model or multiple models by most informative feature is usually done via bar chart where the y-axis is the feature names and the x-axis is numeric value of the coefficient such that the x-axis has both a positive and negative quadrant. The bigger the size of the bar, the more informative that feature is.
+The larger coefficients are necessarily “more informative” because they contribute a greater weight to the final prediction in most cases.
