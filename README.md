@@ -78,11 +78,14 @@ Also known as the Type 2 error
 <img src="cm.png" >
 
 ## What is Feature Importance?
-Feature importance refers to a class of techniques for assigning scores to input features to a predictive model that indicates the relative importance of each feature when making a prediction. Feature importance scores can be calculated for regression and classification problems.  
+The feature engineering process involves selecting the minimum required features to produce a valid model because the more features a model contains, the more complex it is (and the more sparse the data), therefore the more sensitive the model is to errors due to variance. A common approach to eliminating features is to describe their relative importance to a model, then eliminate weak features or combinations of features and re-evalute to see if the model fairs better during cross-validation.  
+
+Negative feature importance value means that feature makes the loss go up. ... This might mean that your model is underfit (not enough iteration and it has not used the feature enough) or that the feature is not good and you can try removing it to improve final quality.  
+Visualizing a model or multiple models by most informative feature is usually done via bar chart where the y-axis is the feature names and the x-axis is numeric value of the coefficient such that the x-axis has both a positive and negative quadrant. The bigger the size of the bar, the more informative that feature is.
+The larger coefficients are necessarily “more informative” because they contribute a greater weight to the final prediction in most cases.  
 
 ### Logictic Regression Feature Importance
 
 <img src="fi.png">
 
-Visualizing a model or multiple models by most informative feature is usually done via bar chart where the y-axis is the feature names and the x-axis is numeric value of the coefficient such that the x-axis has both a positive and negative quadrant. The bigger the size of the bar, the more informative that feature is.
-The larger coefficients are necessarily “more informative” because they contribute a greater weight to the final prediction in most cases.
+
