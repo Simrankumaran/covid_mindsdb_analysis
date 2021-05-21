@@ -1,4 +1,4 @@
-# Covid data analysis  
+# Covid data analysis using Logistic Regression Algorithm
 To classify if the symptoms are for COVID,ALLERGY,COLD or FLU.  
 
 ## What is Classification?  
