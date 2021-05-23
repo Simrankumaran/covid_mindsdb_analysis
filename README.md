@@ -76,7 +76,7 @@ The actual value was positive but the model predicted a negative value
 Also known as the Type 2 error  
 
 Mindsdb results
-```
+`
 cm=confusion_matrix(real_output, pred_output)
 [[ 7959   147     3    32]
  [   81   346     8    89]
@@ -90,7 +90,7 @@ fscore:    [0.98132051 0.60331299 0.47563917 0.94726742]
 support:   [ 8141       524       1079        12483]
 
 #for 'ALLERGY','COLD', 'COVID', 'FLU' respectively
-```
+`
 Logistic regression results
 ```
 cm=confusion_matrix(y_test,y_pred)
