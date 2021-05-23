@@ -121,8 +121,10 @@ The larger coefficients are necessarily “more informative” because they cont
 
 ### Logictic Regression Feature Importance
 
-Important features for each class
+Important features for each class  
+
 <img src="fiMC.png">
 
-Important features for the whole model
+Important features for the whole model  
+
 <img src="FIWC.png">
