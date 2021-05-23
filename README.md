@@ -57,7 +57,7 @@ Gradient boosting is a greedy algorithm and can overfit a training dataset quick
 
 **USE:** Gradient boosting is typically used with decision trees (especially CART trees) of a fixed size as base learners. For this special case, Friedman proposes a modification to gradient boosting method which improves the quality of fit of each base learner.  
 <hr>
-<img src="5models.png">
+<img src="assets/5models.PNG">
 Out of these models, Logistic Regression gives the highest accuracy.  
 
 ## What is Confusion Matrix?  
@@ -93,7 +93,7 @@ support:   [ 8141       524       1079        12483]
 
 for 'ALLERGY','COLD', 'COVID', 'FLU' respectively
 ```
-<img src="mindsdbCM.png">
+<img src="assets/mindsdbCM.png">
 
 
 Logistic regression results
@@ -112,7 +112,7 @@ support:   [ 8241      500        969        12517]
 
 for 'ALLERGY','COLD', 'COVID', 'FLU' respectively
 ```
-<img src="cm.png">
+<img src="assets/cm.png">
 
 ## What is Feature Importance?
 The feature engineering process involves selecting the minimum required features to produce a valid model because the more features a model contains, the more complex it is (and the more sparse the data), therefore the more sensitive the model is to errors due to variance. A common approach to eliminating features is to describe their relative importance to a model, then eliminate weak features or combinations of features and re-evalute to see if the model fairs better during cross-validation.  
@@ -125,8 +125,8 @@ The larger coefficients are necessarily “more informative” because they cont
 
 Important features for each class  
 
-<img src="fiMC.png">
+<img src="assets/fiMC.png">
 
 Important features for the whole model  
 
-<img src="FIWC.png">
+<img src="assets/FIWC.png">
