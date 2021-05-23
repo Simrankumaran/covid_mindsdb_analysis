@@ -96,7 +96,7 @@ for 'ALLERGY','COLD', 'COVID', 'FLU' respectively
 <img src="assets/mindsdbCM.png">
 
 
-Logistic regression results
+Logistic regression Python Implementation results
 ```
 cm=confusion_matrix(y_test,y_pred)
 array([[ 8166,    46,     8,    21],
