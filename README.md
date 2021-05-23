@@ -76,7 +76,7 @@ The actual value was positive but the model predicted a negative value
 Also known as the Type 2 error  
 
 Mindsdb results
-`
+```
 cm=confusion_matrix(real_output, pred_output)
 [[ 7959   147     3    32]
  [   81   346     8    89]
@@ -89,8 +89,11 @@ recall:    [0.97764402 0.66030534 0.45690454 0.94905071]
 fscore:    [0.98132051 0.60331299 0.47563917 0.94726742]
 support:   [ 8141       524       1079        12483]
 
-#for 'ALLERGY','COLD', 'COVID', 'FLU' respectively
-`
+for 'ALLERGY','COLD', 'COVID', 'FLU' respectively
+```
+<img src="mindsdbCM.png">
+
+
 Logistic regression results
 ```
 cm=confusion_matrix(y_test,y_pred)
@@ -105,8 +108,9 @@ recall:    [0.99089916 0.516      0.63157895 0.92913637]
 fscore:    [0.97960653 0.55424275 0.52918288 0.94791752]
 support:   [ 8241      500        969        12517]
 
-#for 'ALLERGY','COLD', 'COVID', 'FLU' respectively
+for 'ALLERGY','COLD', 'COVID', 'FLU' respectively
 ```
+<img src="cm.png">
 
 ## What is Feature Importance?
 The feature engineering process involves selecting the minimum required features to produce a valid model because the more features a model contains, the more complex it is (and the more sparse the data), therefore the more sensitive the model is to errors due to variance. A common approach to eliminating features is to describe their relative importance to a model, then eliminate weak features or combinations of features and re-evalute to see if the model fairs better during cross-validation.  
@@ -117,6 +121,8 @@ The larger coefficients are necessarily “more informative” because they cont
 
 ### Logictic Regression Feature Importance
 
+Important features for each class
+<img src="fiMC.png">
+
+Important features for the whole model
 <img src="fi.png">
-
-
