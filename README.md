@@ -125,4 +125,4 @@ Important features for each class
 <img src="fiMC.png">
 
 Important features for the whole model
-<img src="fi.png">
+<img src="FIWC.png">
