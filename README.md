@@ -75,7 +75,38 @@ The predicted value was falsely predicted
 The actual value was positive but the model predicted a negative value  
 Also known as the Type 2 error  
 
-<img src="cm.png" >
+Mindsdb results
+```
+cm=confusion_matrix(real_output, pred_output)
+[[ 7959   147     3    32]
+ [   81   346     8    89]
+ [    7    17   493   562]
+ [   33   113   490 11847]]
+ 
+precision, recall, fscore, support = score(real_output, pred_output)
+precision: [0.98502475 0.55537721 0.49597586 0.94549082]
+recall:    [0.97764402 0.66030534 0.45690454 0.94905071]
+fscore:    [0.98132051 0.60331299 0.47563917 0.94726742]
+support:   [ 8141       524       1079        12483]
+
+#for 'ALLERGY','COLD', 'COVID', 'FLU' respectively
+```
+Logistic regression results
+```
+cm=confusion_matrix(y_test,y_pred)
+array([[ 8166,    46,     8,    21],
+       [  197,   258,    13,    32],
+       [    8,    11,   612,   338],
+       [   60,   116,   711, 11630]], dtype=int64)
+ 
+precision, recall, fscore, support = score(y_test,y_pred)
+precision: [0.96856838 0.59860789 0.45535714 0.96747359]
+recall:    [0.99089916 0.516      0.63157895 0.92913637]
+fscore:    [0.97960653 0.55424275 0.52918288 0.94791752]
+support:   [ 8241      500        969        12517]
+
+#for 'ALLERGY','COLD', 'COVID', 'FLU' respectively
+```
 
 ## What is Feature Importance?
 The feature engineering process involves selecting the minimum required features to produce a valid model because the more features a model contains, the more complex it is (and the more sparse the data), therefore the more sensitive the model is to errors due to variance. A common approach to eliminating features is to describe their relative importance to a model, then eliminate weak features or combinations of features and re-evalute to see if the model fairs better during cross-validation.  
