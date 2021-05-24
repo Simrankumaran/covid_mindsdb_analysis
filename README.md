@@ -1,10 +1,10 @@
-# Prediction/Forecasting: Experimenting with Mindsdb & Python Classification Algorithms
-**OBJECTIVE-**  To solve Classification problem where we have to predict the `Diagnose(COVID,ALLERGEY,COLD,FLU)` and predict the chances of a `Heart attack` using `Mindsdb and Python`
+# Prediction/Forecasting: Experimenting with MindsDB & Python Classification Algorithms
+**OBJECTIVE-**  To solve Classification problem where we have to predict the `Diagnose(COVID,ALLERGEY,COLD,FLU)` and predict the chances of a `Heart attack` using `MindsDB and Python`
 ## Table of Contents
   - [Classification](#what-is-classification)    
   - [MindsDB](#what-is-mindsdb)  
   - [Python Implementation](#python-implementation)  
-  - [Evalution Metrics](#what-is-confusion-matrix)  
+  - [Evalution Metrics](#evaluation-metrics)  
   - [Comparing Results](#interpreting-the-results-of-mindsdb-and-logistic-regression)   
   - [Feature Importance](#what-is-feature-importance)  
   - [Summary](#conclusion)  
@@ -16,7 +16,7 @@ In machine learning, classification refers to a predictive modeling problem wher
 -Multi-Label Classification  
 -Imbalanced Classification  
 
-### What is Binary Classification?  
+**What is Binary Classification?**    
 `Binary classification` is the simplest kind of machine learning problem. 
 The goal of binary classification is to categorise data points into one of two buckets: 0 or 1, true or false, to survive or not to survive, blue or no blue eyes, etc.  
 Popular algorithms that can be used for binary classification include:  
@@ -25,7 +25,7 @@ Popular algorithms that can be used for binary classification include:
 -Decision Trees  
 -Support Vector Machine  
 -Naive Bayes  
-### What is Multi-class Classification?    
+**What is Multi-class Classification?**      
 In machine learning, `multiclass or multinomial classification` is the problem of classifying instances into one of three or more classes.  
 Popular algorithms that can be used for multi-class classification include:  
 -k-Nearest Neighbors.  
@@ -35,18 +35,16 @@ Popular algorithms that can be used for multi-class classification include:
 -Gradient Boosting.  
 <hr>
 
-## What is [Mindsdb](https://mindsdb.com/)?  
+## What is [MindsDB](https://mindsdb.com/)?  
 MindsDB is an open-source AI layer for existing databases that allows you to effortlessly develop, train and deploy state-of-the-art machine learning models using SQL queries. With MindsDB any developer, analyst or data scientist can automatically build and deploy Machine Learning models from inside the databases in minutes using a graphical user interface or plain SQL.  
 
-### How to setup Mindsdb?
+### How to [setup](https://docs.mindsdb.com/) MindsDB?
 There are a few options to install MindsDB on different operating systems. To find the one that works the best for you, check out the links.  
--[Docker](https://docs.mindsdb.com/installation/docker/)  
--[Windows](https://docs.mindsdb.com/installation/windows/)  
--[Linux](https://docs.mindsdb.com/installation/linux/)  
--[Mac OS](https://docs.mindsdb.com/installation/macos/)  
--[From Source](https://docs.mindsdb.com/installation/source/)  
+-For [Windows](https://docs.mindsdb.com/installation/windows/)    
+-For [Python Native](https://docs.mindsdb.com/JupyterNotebook/)  
+Python native is used in this module.  
 
-### How to [connect](https://docs.mindsdb.com/datasources/mysql/) your data?
+### How to [import](https://docs.mindsdb.com/datasources/mysql/) your data?
 You can use the MySQL dump in the repository to import the datasets to you MySQL workbench.
 
 ### How to [train](https://docs.mindsdb.com/model/mysql/) the model and predict data?
@@ -61,7 +59,57 @@ To check that the training finished successfully, you can SELECT from the mindsd
 SELECT * FROM mindsdb.predictors WHERE name='<model_name>';
 ```
 
-## Python Implementation      
+## Python Implementation     
+We first have the Pre-Processing of the data, then we have the Machine Learning aspect of it where we train the model using the data and finally, we have the prediction where we give x data into the model to return a prediction after training the model with a pre-existing data set. 
+**Pre-Processing**  
+
+We can think of DataFrames as a 2D structure or like a 2D array of kinds that has a row and a column. We use a DataFrame here to load the .csv data to be used by the program. We can use this with the help of the pandas library.
+```
+import pandas as pd
+df = pd.read_csv('sampleDataset.csv')
+```
+There are a few things that we do with this DataFrame before we're ready to train our model. This is called pre-processing. During pre-processing, we help clean our dataset. This helps is providing a more accurate and clean model execution.  
+
+We use the shape function from pandas to return the number of rows and colums in the DataFrame.
+```
+df.shape
+```
+
+The dropna function can be used to trim the empty data. Dropna is used to drop rows where at least one row is missing.
+```
+df.dropna()
+```
+
+After this, we can compare the value from the original DataFrame that we got using shape function with the value from the shape function after using Dropna. We can find that there's almost some reduction in the number of rows in the DataFrame now. 
+
+Now we check the dataset. If there are Yes and No values in the columns, we replace them with 1's and 0's since models understand only numbers. To do so, we use the replace function.
+```
+df['col_name'].replace({'No': 0, 'Yes': 1}, inplace =  True)
+```
+**Training**
+
+Now that we're done with pre-processing the data, we can now train our model. Before that we need to split our data into training data and testing data. To do so we use the train_test_split() function from sklearn model selection. 
+
+```
+from sklearn.model_selection import train_test_split
+x_train, x_test, y_train, y_test  =  train_test_split(x, y, test_size=0.20, random_state=42)
+```
+
+In the above line, we split the data into training and testing data where 80% of the data is used for training while 20% is used for testing.
+We also shuffle our data to prevent any bias.
+
+**What is bias?**  
+We can think of Bias as the accuracy in our predictions. If there exists a high bias, it can cause our prediction to be inaccurate. 
+
+_"Bias is the  algorithm's tendency to consistently learn the wrong thing by not taking into account all the information in the data(underfitting)."_ - Foreman
+
+Parametric algorithms are prone to high bias. A parametric algorithm has a set number of parameters it considers to train the data. Example of high-bias algorithms are Linear Regression, Linear Discriminant Analysis, and Logistic Regression.
+ 
+After this we can build our model with any of the ML algorithms we choose.
+ 
+`fit()` is implemented by every estimator and it accepts an input in its parameters like the sample data and its argument for labels. It can also take additional parameters like weights etc. 
+The fit method typically start with clearing any attributes already stored on the estimator and then perform parameter and data validation. They also are responsible for estimating the attr. out of the input data and store the model attr. and finally return the fitted estimator. 
+
 Algorithms that can be used for Multi-class classification problems:  
 **1. K-Nearest Neighbors:**    
 The k-nearest neighbors (KNN) algorithm is a simple, easy-to-implement supervised machine learning algorithm that can be used to solve both classification and regression problems. 
@@ -96,8 +144,10 @@ Gradient boosting is a greedy algorithm and can overfit a training dataset quick
 <img src="assets/5models.PNG">
 Out of these models, Logistic Regression gives the highest accuracy.  
 
-Now to **evaluate** how accurate our model is, we can use different metrics but here we'll use accuracy score.
-### What is Confusion Matrix?  
+## Evaluation Metrics
+Now to **evaluate** how accurate our model is, we can use different metrics but here we'll use accuracy score.   
+
+**What is Confusion Matrix?**      
 A `Confusion matrix` is an N x N matrix used for evaluating the performance of a classification model, where N is the number of target classes. The matrix compares the actual target values with those predicted by the machine learning model. This gives us a holistic view of how well our classification model is performing and what kinds of errors it is making.  
 * True Positive (TP)  
 The predicted value matches the actual value  
@@ -114,7 +164,7 @@ The predicted value was falsely predicted
 The actual value was positive but the model predicted a negative value  
 Also known as the Type 2 error  
 
-### What is ![AccuracyScore](/assets/accuracy.png)?
+**What is ![AccuracyScore](/assets/accuracy.png)?**  
 <u>**Accuracy**</u> Score produces a result according to the sum of the number of times our model predicted no correctly(True Negative) and yes correctly(True Positive) by the total number of predictions.
 ```
 from sklearn.metrics import accuracy_score
@@ -122,7 +172,7 @@ score = accuracy_score(y_test, y_pred)
 ```
 The higher the accuracy score is, the better and more accurate our model is and so are our predictions. 
 
-### What is ![PrecisionScore](/assets/precision.png)?  
+**What is ![PrecisionScore](/assets/precision.png)?**    
 <u>**Precision Score**</u> is the ratio of correctly predicted positive observations to the total predicted positive observations. High precision rates to the low false positive rate.  
 
 ```
@@ -131,7 +181,7 @@ precision_score(y_test, y_pred, average='None')
 ```
 The precision is intuitively the ability of the classifier not to label as positive a sample that is negative.
 
-### What is ![RecallScore](/assets/recall.png)?  
+**What is ![RecallScore](/assets/recall.png)?**    
 <u>**Recall Score**</u> is the ratio of correctly predicted positive observarions to the all observations. It's a metric that quantifies the number of correct positive predictions made out of all positive predictions that could have been made. 
 
 ```
@@ -140,7 +190,7 @@ recall_score(y_test, y_pred)
 ```
 It is intuitively the ability of the classifier to find all the positive samples.
 
-### What is ![F1Score](/assets/f1.png)?  
+**What is ![F1Score](/assets/f1.png)?**    
 <u>**F1 Score**</u> is the weighted average of precision and recall scores. Therefore, this score takes both false positives and false negatives into accout.
 
 ```
@@ -211,7 +261,7 @@ Important features for the whole model
 <img src="assets/FIWC.png">
 
 ## Conclusion  
-We had to experiment with both methods-mindsdb and python implementation because using Mindsdb will not help us understand the working of the ML Model that it uses to predict the datasets. To understand the working behind mindsdb functions, we had to compare it with Logistic Regression model in python  
+We had to experiment with both methods-mindsdb and python implementation because using Mindsdb will not help us understand the working of the ML Model that it uses to predict the datasets. To understand the working behind mindsdb functions, we had to compare it with a few machine learning models in python.    
 
 ## Authors and Acknowledgment  
 [@Simrankumaran](https://github.com/Simrankumaran) <br> [@vgnsh333](https://github.com/vgnsh333) <br> [@Vcuber](https://github.com/Vcuber) <br> created this module with the guidance of [@rathishkumar](https://github.com/rathishkumar).  
