@@ -39,9 +39,12 @@ Popular algorithms that can be used for multi-class classification include:
 MindsDB is an open-source AI layer for existing databases that allows you to effortlessly develop, train and deploy state-of-the-art machine learning models using SQL queries. With MindsDB any developer, analyst or data scientist can automatically build and deploy Machine Learning models from inside the databases in minutes using a graphical user interface or plain SQL.  
 
 ### How to setup Mindsdb?
--
--
--
+There are a few options to install MindsDB on different operating systems. To find the one that works the best for you, check out the links.  
+-[Docker](https://docs.mindsdb.com/installation/docker/)  
+-[Windows](https://docs.mindsdb.com/installation/windows/)  
+-[Linux](https://docs.mindsdb.com/installation/linux/)  
+-[Mac OS](https://docs.mindsdb.com/installation/macos/)  
+-[From Source](https://docs.mindsdb.com/installation/source/)  
 
 ### How to [connect](https://docs.mindsdb.com/datasources/mysql/) your data?
 You can use the MySQL dump in the repository to import the datasets to you MySQL workbench.
@@ -175,16 +178,16 @@ accuracy = accuracy_score(real_output, pred_output)
 0.9288253025599497
 
 cm=confusion_matrix(real_output, pred_output)
-[[ 7959   147     3    32]
- [   81   346     8    89]
- [    7    17   493   562]
- [   33   113   490 11847]]
+[[ 8065    65    10    27]
+ [  188   267    23    72]
+ [    3     8   521   509]
+ [   46    98   543 11782]]
  
 precision, recall, fscore, support = score(real_output, pred_output)
-precision: [0.98502475 0.55537721 0.49597586 0.94549082]
-recall:    [0.97764402 0.66030534 0.45690454 0.94905071]
-fscore:    [0.98132051 0.60331299 0.47563917 0.94726742]
-support:   [ 8141       524       1079        12483]
+precision: [0.97145266 0.60958904 0.47493163 0.95092817]
+recall:    [0.98751071 0.48545455 0.50048031 0.94490336]
+fscore:    [0.97941587 0.54048583 0.48737138 0.94790619]
+support:   [ 8167   550  1041 12469]
 
 for 'ALLERGY','COLD', 'COVID', 'FLU' respectively
 ```
