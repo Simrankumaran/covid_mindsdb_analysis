@@ -3,9 +3,10 @@
 ## Table of Contents
   - [Classification](#what-is-classification)    
   - [MindsDB](#what-is-mindsdb)  
-  - [Python Implementation](#algorithms-that-can-be-used-for-multi-class-classification-problems)  
+  - [Python Implementation](#python-implementation)  
   - [Evalution Metrics](#what-is-confusion-matrix)  
-  - [Comparing Results](#interpreting-the-results-of-mindsdb-and-logistic-regression)     
+  - [Comparing Results](#interpreting-the-results-of-mindsdb-and-logistic-regression)   
+  - [Feature Importance](#what-is-feature-importance)  
   - [Summary](#conclusion)  
  
 ## What is Classification?  
@@ -45,7 +46,7 @@ MindsDB is an open-source AI layer for existing databases that allows you to eff
 ### How to [connect](https://docs.mindsdb.com/datasources/mysql/) your data?
 You can use the MySQL dump in the repository to import the datasets to you MySQL workbench.
 
-### How to [train](https://docs.mindsdb.com/model/mysql/) the model?
+### How to [train](https://docs.mindsdb.com/model/mysql/) the model and predict data?
 To train a new model, you will need to INSERT a new record inside the mindsdb.predictors table.
 The INSERT query for training new model is quite simple, e.g.:
 ```
@@ -56,8 +57,6 @@ To check that the training finished successfully, you can SELECT from the mindsd
 ```
 SELECT * FROM mindsdb.predictors WHERE name='<model_name>';
 ```
-### How to [predict] data?  
-
 
 ## Python Implementation      
 Algorithms that can be used for Multi-class classification problems:  
@@ -149,7 +148,7 @@ Intuitively, it's not easy to understand as accuract, but F1 is usually more use
 
 
 ### Interpreting the results of Mindsdb and Logistic Regression  
-`**Logistic regression**` Python Implementation results  
+`Logistic regression` Python Implementation results  
 ```
 model.score(x_test,y_test)
 0.9297700994286229
@@ -170,7 +169,7 @@ for 'ALLERGY','COLD', 'COVID', 'FLU' respectively
 ```
 <img src="assets/cm.png">  
 
-`**Mindsdb results**`
+`Mindsdb results`
 ```
 accuracy = accuracy_score(real_output, pred_output)
 0.9288253025599497
@@ -210,3 +209,6 @@ Important features for the whole model
 
 ## Conclusion  
 We had to experiment with both methods-mindsdb and python implementation because using Mindsdb will not help us understand the working of the ML Model that it uses to predict the datasets. To understand the working behind mindsdb functions, we had to compare it with Logistic Regression model in python  
+
+## Authors and Acknowledgment  
+[@Simrankumaran](https://github.com/Simrankumaran) <br> [@vgnsh333](https://github.com/vgnsh333) <br> [@Vcuber](https://github.com/Vcuber) <br> created this module with the guidance of [@rathishkumar](https://github.com/rathishkumar).  
