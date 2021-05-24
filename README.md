@@ -1,6 +1,13 @@
-# Covid data analysis using Logistic Regression Algorithm
-To classify if the symptoms are for COVID,ALLERGY,COLD or FLU.  
-
+# Prediction/Forecasting: Experimenting with Mindsdb & Python Classification Algorithms
+**OBJECTIVE-**  To solve Classification problem where we have to predict the `Diagnose(COVID,ALLERGEY,COLD,FLU)` and predict the chances of a `Heart attack` using `Mindsdb and Python`
+## Table of Contents
+  - [Classification](#what-is-classification)    
+  - [MindsDB](#what-is-mindsdb)  
+  - [Python Implementation](#algorithms-that-can-be-used-for-multi-class-classification-problems)  
+  - [Evalution Metrics](#what-is-confusion-matrix)  
+  - [Comparing Results](#interpreting-the-results-of-mindsdb-and-logistic-regression)     
+  - [Summary](#conclusion)  
+ 
 ## What is Classification?  
 In machine learning, classification refers to a predictive modeling problem where a class label is predicted for a given example of input data.Use the optimal clasification algorithm to predict the result.There are perhaps four main types of classification tasks that you may encounter; they are:  
 -Binary Classification  
@@ -25,8 +32,35 @@ Popular algorithms that can be used for multi-class classification include:
 -Naive Bayes.  
 -Random Forest.  
 -Gradient Boosting.  
+<hr>
 
-## Algorithms that can be used for Multi-class classification problems:
+## What is [Mindsdb](https://mindsdb.com/)?  
+MindsDB is an open-source AI layer for existing databases that allows you to effortlessly develop, train and deploy state-of-the-art machine learning models using SQL queries. With MindsDB any developer, analyst or data scientist can automatically build and deploy Machine Learning models from inside the databases in minutes using a graphical user interface or plain SQL.  
+
+### How to setup Mindsdb?
+-
+-
+-
+
+### How to [connect](https://docs.mindsdb.com/datasources/mysql/) your data?
+You can use the MySQL dump in the repository to import the datasets to you MySQL workbench.
+
+### How to [train](https://docs.mindsdb.com/model/mysql/) the model?
+To train a new model, you will need to INSERT a new record inside the mindsdb.predictors table.
+The INSERT query for training new model is quite simple, e.g.:
+```
+INSERT INTO mindsdb.predictors(name, predict, select_data_query)
+VALUES('model_name', 'target_variable', 'SELECT * FROM table_name');
+```
+To check that the training finished successfully, you can SELECT from the mindsdb.predictors table and get the training status, e.g.:
+```
+SELECT * FROM mindsdb.predictors WHERE name='<model_name>';
+```
+### How to [predict] data?  
+
+
+## Python Implementation      
+Algorithms that can be used for Multi-class classification problems:  
 **1. K-Nearest Neighbors:**    
 The k-nearest neighbors (KNN) algorithm is a simple, easy-to-implement supervised machine learning algorithm that can be used to solve both classification and regression problems. 
 It’s easy to implement and understand, but has a major drawback of becoming significantly slows as the size of that data in use grows. 
@@ -56,11 +90,12 @@ It is based on the concept of ensemble learning, which is a process of combining
 Gradient boosting is a greedy algorithm and can overfit a training dataset quickly.It can benefit from regularization methods that penalize various parts of the algorithm and generally improve the performance of the algorithm by reducing overfitting.  
 
 **USE:** Gradient boosting is typically used with decision trees (especially CART trees) of a fixed size as base learners. For this special case, Friedman proposes a modification to gradient boosting method which improves the quality of fit of each base learner.  
-<hr>
+
 <img src="assets/5models.PNG">
 Out of these models, Logistic Regression gives the highest accuracy.  
 
-## What is Confusion Matrix?  
+Now to **evaluate** how accurate our model is, we can use different metrics but here we'll use accuracy score.
+### What is Confusion Matrix?  
 A `Confusion matrix` is an N x N matrix used for evaluating the performance of a classification model, where N is the number of target classes. The matrix compares the actual target values with those predicted by the machine learning model. This gives us a holistic view of how well our classification model is performing and what kinds of errors it is making.  
 * True Positive (TP)  
 The predicted value matches the actual value  
@@ -77,27 +112,48 @@ The predicted value was falsely predicted
 The actual value was positive but the model predicted a negative value  
 Also known as the Type 2 error  
 
-Mindsdb results
+### What is ![AccuracyScore](/assets/accuracy.png)?
+<u>**Accuracy**</u> Score produces a result according to the sum of the number of times our model predicted no correctly(True Negative) and yes correctly(True Positive) by the total number of predictions.
 ```
-cm=confusion_matrix(real_output, pred_output)
-[[ 7959   147     3    32]
- [   81   346     8    89]
- [    7    17   493   562]
- [   33   113   490 11847]]
- 
-precision, recall, fscore, support = score(real_output, pred_output)
-precision: [0.98502475 0.55537721 0.49597586 0.94549082]
-recall:    [0.97764402 0.66030534 0.45690454 0.94905071]
-fscore:    [0.98132051 0.60331299 0.47563917 0.94726742]
-support:   [ 8141       524       1079        12483]
-
-for 'ALLERGY','COLD', 'COVID', 'FLU' respectively
+from sklearn.metrics import accuracy_score
+score = accuracy_score(y_test, y_pred)
 ```
-<img src="assets/mindsdbCM.png">
+The higher the accuracy score is, the better and more accurate our model is and so are our predictions. 
 
+### What is ![PrecisionScore](/assets/precision.png)?  
+<u>**Precision Score**</u> is the ratio of correctly predicted positive observations to the total predicted positive observations. High precision rates to the low false positive rate.  
 
-Logistic regression Python Implementation results
 ```
+from sklearn.metrics import precision_score
+precision_score(y_test, y_pred, average='None')
+```
+The precision is intuitively the ability of the classifier not to label as positive a sample that is negative.
+
+### What is ![RecallScore](/assets/recall.png)?  
+<u>**Recall Score**</u> is the ratio of correctly predicted positive observarions to the all observations. It's a metric that quantifies the number of correct positive predictions made out of all positive predictions that could have been made. 
+
+```
+from sklearn.metrics import recall_score
+recall_score(y_test, y_pred)
+```
+It is intuitively the ability of the classifier to find all the positive samples.
+
+### What is ![F1Score](/assets/f1.png)?  
+<u>**F1 Score**</u> is the weighted average of precision and recall scores. Therefore, this score takes both false positives and false negatives into accout.
+
+```
+from sklearn.metrics import f1_score
+f1_score(y_test, y_pred)
+```
+Intuitively, it's not easy to understand as accuract, but F1 is usually more useful than accuracy, especially if there's an uneven class distribution.  
+
+
+### Interpreting the results of Mindsdb and Logistic Regression  
+`**Logistic regression**` Python Implementation results  
+```
+model.score(x_test,y_test)
+0.9297700994286229
+
 cm=confusion_matrix(y_test,y_pred)
 array([[ 8166,    46,     8,    21],
        [  197,   258,    13,    32],
@@ -112,7 +168,28 @@ support:   [ 8241      500        969        12517]
 
 for 'ALLERGY','COLD', 'COVID', 'FLU' respectively
 ```
-<img src="assets/cm.png">
+<img src="assets/cm.png">  
+
+`**Mindsdb results**`
+```
+accuracy = accuracy_score(real_output, pred_output)
+0.9288253025599497
+
+cm=confusion_matrix(real_output, pred_output)
+[[ 7959   147     3    32]
+ [   81   346     8    89]
+ [    7    17   493   562]
+ [   33   113   490 11847]]
+ 
+precision, recall, fscore, support = score(real_output, pred_output)
+precision: [0.98502475 0.55537721 0.49597586 0.94549082]
+recall:    [0.97764402 0.66030534 0.45690454 0.94905071]
+fscore:    [0.98132051 0.60331299 0.47563917 0.94726742]
+support:   [ 8141       524       1079        12483]
+
+for 'ALLERGY','COLD', 'COVID', 'FLU' respectively
+```
+<img src="assets/mindsdbCM.png">  
 
 ## What is Feature Importance?
 The feature engineering process involves selecting the minimum required features to produce a valid model because the more features a model contains, the more complex it is (and the more sparse the data), therefore the more sensitive the model is to errors due to variance. A common approach to eliminating features is to describe their relative importance to a model, then eliminate weak features or combinations of features and re-evalute to see if the model fairs better during cross-validation.  
@@ -130,3 +207,6 @@ Important features for each class
 Important features for the whole model  
 
 <img src="assets/FIWC.png">
+
+## Conclusion  
+We had to experiment with both methods-mindsdb and python implementation because using Mindsdb will not help us understand the working of the ML Model that it uses to predict the datasets. To understand the working behind mindsdb functions, we had to compare it with Logistic Regression model in python  
